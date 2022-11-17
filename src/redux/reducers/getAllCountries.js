@@ -1,4 +1,4 @@
-import {GET_ALL_COUNTRIES, SET_ALL_COUNTRIES} from "../../constants";
+import { SET_ALL_COUNTRIES} from "../../constants";
 
 const initialState={
     countries:[],
@@ -19,6 +19,5 @@ function allCountries(state = initialState, action) {
     }
 
 }
-
 
 export default allCountries;

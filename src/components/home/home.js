@@ -5,6 +5,7 @@ import MediaCard from "../card";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {SET_ALL_COUNTRIES} from "../../constants";
+import {Outlet} from "react-router-dom";
 
 function Home() {
     const stateAllCountries=useSelector(state => state.getAllCountries);
@@ -13,13 +14,10 @@ function Home() {
 
     useEffect(()=>{
         dispatch({type:SET_ALL_COUNTRIES});
-        // console.log('Hello');
     },[]);
     return (<div className={'container-fluid'}>
-        <MenuAppBar/>
-        <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between"}}> {stateAllCountries.countries.map((item,index)=>{
-
-            return <MediaCard countrie={item} key={index}/>
+           <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between"}}> {stateAllCountries.countries.map((item,index)=>{
+            return <MediaCard countrie={item} id={item.alpha3Code} key={index}/>
         })}</div>
     </div>);
 }

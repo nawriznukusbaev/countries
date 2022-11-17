@@ -1,9 +1,16 @@
-import {GET_ALL_COUNTRIES, SET_ALL_COUNTRIES,GET_COUNTRIE} from "../../constants";
+import {SET_COUNTRY, SET_ALL_COUNTRIES} from "../../constants";
 export const add = (input) => {
-    console.log(input);
     return {
         type: SET_ALL_COUNTRIES,
         data: input
     }
 }
+
+export const addCountry=(input)=>{
+    return {
+        type:SET_COUNTRY,
+        data:input
+    }
+}
+
 
