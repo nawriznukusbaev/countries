@@ -4,27 +4,19 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import {FormControl} from "@mui/material";
+import {InputLabel} from "@mui/material";
+import {Select} from "@mui/material";
+import {MenuItem} from "@mui/material";
 
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
+import {useDispatch} from "react-redux";
+import {addRegion} from "../../redux/store/actionsCreators";
+
+
+
 
 export default function MenuAppBar() {
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
+    const dispatch=useDispatch();
     return (
         <Box sx={{ flexGrow: 1 }}>
             
@@ -42,12 +34,32 @@ export default function MenuAppBar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Countries
                     </Typography>
+                    <FormControl >
+                        <InputLabel id="demo-simple-select-label">Regions</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Regions"
+                            onChange={(e)=>{
+                               dispatch(addRegion(e.target.value))
+                            }}
+                        >
+                            <MenuItem value={'all'}>All</MenuItem>
+                            <MenuItem value={'Asia'}>Asia</MenuItem>
+                            <MenuItem value={'Europe'}>Europe</MenuItem>
+                            <MenuItem value={'Americas'}>Americas</MenuItem>
+                            <MenuItem value={'Oceania'}>Oceania</MenuItem>
+                            <MenuItem value={'Africa'}>Africa</MenuItem>
+                            <MenuItem value={'Polar'}>Polar</MenuItem>
 
+                        </Select>
+                    </FormControl>
                 </Toolbar>
             </AppBar>
         </Box>
     );
 }
+
 
 
 
